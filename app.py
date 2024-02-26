@@ -22,6 +22,11 @@ class InferlessPythonModel:
         buff = BytesIO()
         image.save(buff, format="JPEG")
         img_str = base64.b64encode(buff.getvalue()).decode()
+        path = "/var/nfs-mount/stable-diff" 
+        f = open(path + "demofile3.txt", "w")
+        f.write("Woops! I have deleted the content!")
+        f.close()
+        
         return { "generated_image_base64" : img_str }
         
     def finalize(self):
