@@ -4,12 +4,14 @@ from io import BytesIO
 import base64
 from huggingface_hub import snapshot_download
 import os
+import shutil
+
 
 class InferlessPythonModel:
     def initialize(self):
         print("Hello World 13")
         path = "/var/nfs-mount/stable-diff/" 
-        os.remove(path + "demofile3.txt")
+        shutil.remove(path + "demofile3.txt")
         f = open(path + "demofile5.txt", "w")
         f.write("Woops! I have deleted the content!")
         f.close()
