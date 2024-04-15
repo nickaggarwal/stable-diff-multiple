@@ -14,12 +14,11 @@ class InferlessPythonModel:
         for file in files:
             print(file)
 
-        if os.path.exists(path + "demofile3.txt"):
+        if os.path.exists(path + "demofile5.txt"):
             print("File Present")
-
-        os.remove(path + "demofile3.txt")
+            os.remove(path + "demofile5.txt")
         
-        f = open(path + "demofile5.txt", "w")
+        f = open(path + "demofile6.txt", "w")
         f.write("Woops! I have deleted the content!")
         f.close()
         self.pipe = StableDiffusionPipeline.from_pretrained(
