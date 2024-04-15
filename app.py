@@ -13,6 +13,10 @@ class InferlessPythonModel:
         # Print the list of files
         for file in files:
             print(file)
+
+        if os.path.exists(path + "demofile3.txt"):
+            print("File Present")
+
         os.remove(path + "demofile3.txt")
         
         f = open(path + "demofile5.txt", "w")
