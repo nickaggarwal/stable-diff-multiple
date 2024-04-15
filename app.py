@@ -4,8 +4,6 @@ from io import BytesIO
 import base64
 from huggingface_hub import snapshot_download
 import os
-import shutil
-
 
 class InferlessPythonModel:
     def initialize(self):
@@ -15,7 +13,8 @@ class InferlessPythonModel:
         # Print the list of files
         for file in files:
             print(file)
-        # shutil.remove(path + "demofile3.txt")
+        os.remove(path + "demofile3.txt")
+        
         f = open(path + "demofile5.txt", "w")
         f.write("Woops! I have deleted the content!")
         f.close()
