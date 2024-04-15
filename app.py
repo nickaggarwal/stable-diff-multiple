@@ -11,7 +11,11 @@ class InferlessPythonModel:
     def initialize(self):
         print("Hello World 13")
         path = "/var/nfs-mount/stable-diff/" 
-        shutil.remove(path + "demofile3.txt")
+        files = os.listdir(path)
+        # Print the list of files
+        for file in files:
+            print(file)
+        # shutil.remove(path + "demofile3.txt")
         f = open(path + "demofile5.txt", "w")
         f.write("Woops! I have deleted the content!")
         f.close()
