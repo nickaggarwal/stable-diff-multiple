@@ -8,19 +8,6 @@ import os
 class InferlessPythonModel:
     def initialize(self):
         print("Hello World 13")
-        path = "/var/nfs-mount/stable-diff/" 
-        files = os.listdir(path)
-        # Print the list of files
-        for file in files:
-            print(file)
-
-        if os.path.exists(path + "demofile5.txt"):
-            print("File Present")
-            os.remove(path + "demofile5.txt")
-        
-        f = open(path + "demofile6.txt", "w")
-        f.write("Woops! I have deleted the content!")
-        f.close()
         self.pipe = StableDiffusionPipeline.from_pretrained(
             "stabilityai/stable-diffusion-2-1",
             use_safetensors=True,
@@ -30,7 +17,12 @@ class InferlessPythonModel:
 
 
     def infer(self, inputs):
-        prompt = inputs["prompt"]
+        prompts = inputs["prompt"]
+        print(prompts)
+        if len(prompts) > 1:
+            prompt = prompts[0]
+        else
+            prompt = prompts
         image = self.pipe(prompt).images[0]
         buff = BytesIO()
         image.save(buff, format="JPEG")
