@@ -14,9 +14,8 @@ class InferlessPythonModel:
         print(prompts)
         if len(prompts) > 1:
             prompt = prompts[0]
-        else
+        else:
             prompt = prompts
-        image = self.pipe(prompt).images[0]        
         return { "generated_image_base64" : "sample" }
         
     def finalize(self):
