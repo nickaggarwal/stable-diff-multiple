@@ -8,13 +8,6 @@ import os
 class InferlessPythonModel:
     def initialize(self):
         print("Hello World 13")
-        self.pipe = StableDiffusionPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-2-1",
-            use_safetensors=True,
-            torch_dtype=torch.float16,
-            device_map='auto'
-        )
-
 
     def infer(self, inputs):
         prompts = inputs["prompt"]
@@ -23,13 +16,8 @@ class InferlessPythonModel:
             prompt = prompts[0]
         else
             prompt = prompts
-        image = self.pipe(prompt).images[0]
-        buff = BytesIO()
-        image.save(buff, format="JPEG")
-        img_str = base64.b64encode(buff.getvalue()).decode()
-        
-        
-        return { "generated_image_base64" : img_str }
+        image = self.pipe(prompt).images[0]        
+        return { "generated_image_base64" : "sample" }
         
     def finalize(self):
         self.pipe = None
